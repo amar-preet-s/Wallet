@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Create - Wallet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous" />
+</head>
+<body>
+<div class="container-fluid text-center">
+    
+    <form th:action="@{/Main}" method="post" style="max-width: 30vw;max-height:30vh;margin:35vh 30vw 35vh 35vw">
+     
+        <div th:if="${param.error}">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+         
+        <div th:if="${param.logout}">
+            <p class="text-warning">You have been logged out.</p>
+        </div>
+         
+        <div class="border border-secondary p-3 rounded">
+            <p>Create New Wallet</p>
+            <p>
+                <input th:value=${Account} type="text" name="Account-number" class="form-control" placeholder="Account No..." readonly/>
+            </p>
+            <p>
+                <input type="password" name="password" id="myInput" class="form-control" placeholder="Password" required /><br>
+                <input type="checkbox" onclick="myFunction()">Show Password
+            </p>
+            <p>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </p>
+        </div>
+    </form>      
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>

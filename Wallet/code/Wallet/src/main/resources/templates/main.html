@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous" />
+</head>
+<body>
+
+<div style="max-height:100vh;max-width:100vw;margin:5vh 5vh 5vh 5vh">
+<form>
+<button type="submit" class="btn btn-danger" formaction="/" formmethod="post" style="margin:0px 0px 10px 0px">Logout</button>
+</form>
+<form>
+<div class="form-row">
+   <div class="form-group col-md-6">
+     <label for="Account-number">Account Number</label>
+     <input style="max-width:15vw" type="number" th:value=${Account_No} class="form-control" id="inputEmail4" name="Account-number" readonly/>
+   </div>
+   <div class="form-group col-md-6">
+     <label for="Balance">Current Balance</label>
+     <input style="max-width:15vw" type="number" class="form-control" id="Balance" th:value=${Balance} name="Balance" readonly />
+   </div>
+ </div>
+<div>
+<div class="form-group">
+  <input style="max-width:20vw" min = 1 type="number" class="form-control" id="value" name="Amount" placeholder="Enter Amount" required>
+</div>
+<button type="submit" class="btn btn-primary" formaction="/Deposit" formmethod="post">Deposit</button>
+<button type="submit" class="btn btn-primary" formaction="/Withdraw" formmethod="post">Withdraw</button>
+</form>
+</div>
+<h4 style="margin:15px 0px 10px 0px">Transactions</h4>
+<div style="margin:0px 10px 10px 10px">
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">Account Number</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Credit</th>
+      <th scope="col">Debit</th>
+      <th scope="col">Balance</th>
+    </tr>
+  </thead>
+  <tbody style="overflow:scroll">
+    <tr scope="row" th:if="${Transactions.empty}">
+            <td> No Transactions Available </td>
+     </tr>
+     <tr scope="row" th:each="transaction : ${Transactions}">
+            <td th:text="${transaction.A_No}"></td>
+            <td th:text="${transaction.date}"></td>
+            <td th:text="${transaction.time}"></td>
+            <td th:text="${transaction.credit}"></td>
+            <td th:text="${transaction.debit}"></td>
+            <td th:text="${transaction.Avail_balance}"></td>
+     </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+</body>
+</html>
