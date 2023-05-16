@@ -22,9 +22,9 @@ The project is built using the following technologies and frameworks:
 To get a local copy of the project up and running on your machine, follow these steps:
 
 1. Clone the repository using the following command:
-git clone https://github.com/your-username/wallet-project.git
+git clone https://github.com/amar-preet-s/Wallet.git
 2. Navigate to the project directory:
-cd wallet-project
+cd Wallet
 3. Build the project using Maven:
 mvn clean install
 4. Run the application:
